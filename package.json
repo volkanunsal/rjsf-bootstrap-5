@@ -2,7 +2,7 @@
   "name": "@volkanunsal/rjsf-bootstrap-5",
   "version": "2.4.3",
   "main": "dist/index.js",
-  "module": "dist/bootstrap-5.esm.js",
+  "module": "dist/rjsf-bootstrap-5.esm.js",
   "typings": "dist/index.d.ts",
   "description": "Bootstrap 5 theme, fields and widgets for react-jsonschema-form",
   "files": [
