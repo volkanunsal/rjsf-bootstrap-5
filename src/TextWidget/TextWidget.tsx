@@ -1,5 +1,7 @@
 import React from "react";
+
 import Form from "react-bootstrap/Form";
+
 import { WidgetProps } from "@rjsf/core";
 
 export interface TextWidgetProps extends WidgetProps {
@@ -35,26 +37,12 @@ const TextWidget = ({
   const inputType =
     (type || schema.type) === "string" ? "text" : `${type || schema.type}`;
 
-  // const classNames = [rawErrors.length > 0 ? "is-invalid" : "", type === 'file' ? 'custom-file-label': ""]
-
-  const control =
-    type === "file" ? (
-      <Form.File
-        id={id}
-        placeholder={placeholder}
-        autoFocus={autofocus}
-        required={required}
-        disabled={disabled}
-        readOnly={readonly}
-        className={rawErrors.length > 0 ? "is-invalid" : ""}
-        list={schema.examples ? `examples_${id}` : undefined}
-        type={inputType}
-        value={value || value === 0 ? value : ""}
-        onChange={_onChange}
-        onBlur={_onBlur}
-        onFocus={_onFocus}
-      />
-    ) : (
+  return (
+    <Form.Group className="mb-0">
+      <Form.Label className={rawErrors.length > 0 ? "text-danger" : ""}>
+        {label || schema.title}
+        {(label || schema.title) && required ? "*" : null}
+      </Form.Label>
       <Form.Control
         id={id}
         placeholder={placeholder}
@@ -70,15 +58,6 @@ const TextWidget = ({
         onBlur={_onBlur}
         onFocus={_onFocus}
       />
-    );
-
-  return (
-    <Form.Group className="mb-0">
-      <Form.Label className={rawErrors.length > 0 ? "text-danger" : ""}>
-        {label || schema.title}
-        {(label || schema.title) && required ? "*" : null}
-      </Form.Label>
-      {control}
       {schema.examples ? (
         <datalist id={`examples_${id}`}>
           {(schema.examples as string[])
