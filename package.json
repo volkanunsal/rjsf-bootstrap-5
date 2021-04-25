@@ -1,6 +1,6 @@
 {
   "name": "@volkanunsal/rjsf-bootstrap-5",
-  "version": "2.4.3",
+  "version": "2.4.19",
   "main": "dist/index.js",
   "module": "dist/rjsf-bootstrap-5.esm.js",
   "typings": "dist/index.d.ts",
