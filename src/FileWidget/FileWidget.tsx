@@ -25,9 +25,18 @@ const FileWidget = ({
   rawErrors = [],
 }: FileWidgetProps) => {
   const _onChange = ({
-    target: { value },
-  }: React.ChangeEvent<HTMLInputElement>) =>
-    onChange(value === "" ? options.emptyValue : value);
+    target: { files },
+  }: React.ChangeEvent<HTMLInputElement>) => {
+    const f = files ? files[0] : null;
+    if (!f) return;
+    const reader = new FileReader();
+    reader.onload = e => {
+      const value = e?.target?.result;
+      onChange(value === "" ? options.emptyValue : value);
+    };
+    reader.readAsDataURL(f);
+  };
+
   const _onBlur = ({ target: { value } }: React.FocusEvent<HTMLInputElement>) =>
     onBlur(id, value);
   const _onFocus = ({
