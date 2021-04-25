@@ -17,6 +17,7 @@
   },
   "scripts": {
     "prepare": "npm run build",
+    "postpublish": "git push origin",
     "start": "tsdx watch",
     "build": "rimraf dist && tsdx build",
     "test": "tsdx test"
