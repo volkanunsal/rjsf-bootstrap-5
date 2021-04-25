@@ -15,7 +15,6 @@ const FileWidget = ({
   disabled,
   type,
   label,
-  value,
   onChange,
   onBlur,
   onFocus,
@@ -31,8 +30,8 @@ const FileWidget = ({
     if (!f) return;
     const reader = new FileReader();
     reader.onload = e => {
-      const value = e?.target?.result;
-      onChange(value === "" ? options.emptyValue : value);
+      const dataUri = e?.target?.result;
+      onChange(dataUri === "" ? options.emptyValue : dataUri);
     };
     reader.readAsDataURL(f);
   };
@@ -67,7 +66,6 @@ const FileWidget = ({
           "form-control"
         )}
         type={inputType}
-        value={value || value === 0 ? value : ""}
         onChange={_onChange}
         onBlur={_onBlur}
         onFocus={_onFocus}
